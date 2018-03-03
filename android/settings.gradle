@@ -1,0 +1,3 @@
+rootProject.name = 'KawaDemo2'
+
+include ':app'

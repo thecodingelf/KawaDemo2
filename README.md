@@ -13,7 +13,8 @@ drag and drop the elements to the view.
 - [x] Draggable Objects using panresponder.
 - [x] Fab menu.
 - [ ] Submenu.
-- [ ] Firebase.
+- [x] Firebase.
+- [ ] Setting up Firebase.
 - [ ] Save coords of the elements to db.
 - [ ] Save session.
 - [ ] Select Saved session from gallery.

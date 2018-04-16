@@ -13,13 +13,19 @@ drag and drop the elements to the view.
 - [x] Draggable Objects using panresponder.
 - [x] Fab menu.
 - [ ] Submenu.
-- [x] Firebase.
+- [x] Firebase config.
 - [ ] Setting up Firebase.
 - [ ] Save coords of the elements to firebase.
+- [ ] Gallery for saved sessions.
 - [ ] Save session.
 - [ ] Select Saved session from gallery.
 - [ ] Record voice and save to db.
 - [ ] Text input for the dropped element.
+- [ ] Info page UI.
+- [ ] Change background contrast.
+- [ ] Filters for background.
+- [ ] Horizontal line on the river.
+- [ ] UI Improvements: Material-UI.
 
 ### Installation
 

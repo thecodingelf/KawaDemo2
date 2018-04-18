@@ -3,10 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "ENVFILE=.env.development node node_modules/react-native/local-cli/cli.js start",
-    "start-windows": "env:ENVFILE=\".env.development\"; node node_modules/react-native/local-cli/cli.js start",
-    "android": "ENVFILE=.env.development react-native run-android",
-    "android-windows": "env:ENVFILE=\".env.development\"; react-native run-android",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
   "dependencies": {

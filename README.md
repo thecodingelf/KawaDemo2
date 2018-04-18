@@ -33,7 +33,7 @@ drag and drop the elements to the view.
 
 You need to clone using the git command console or download zip file of this app.
 
-```Command console
+```
 $ git clone https://github.com/thecodingelf/KawaDemo2.git
 ```
 
@@ -43,26 +43,22 @@ You need to do following things after cloning or downloading the zip file of the
 
 
 1. If not have client installed.
-```Node.js Command console
+```
 $ npm install -g react-native-cli
 ```
 2. Packages & node modules
-```Node.js Command console
+```
 $ npm install
+```
+3. Choose your environment by copying the appropriate .env.* file to .env file
+```
+$ cp .env.development .env
 ```
 
 Then, to run it, cd into `(where you clone or unzipped the repository)` and run:
 before this you need to enable developer mode in your phone and connect your phone
 with usb to computer.
 
-Run on macOS or Linux:
-
 ```
 $ npm run android
-```
-
-Run on Windows:
-
-```
-$ npm run android-windows
 ```

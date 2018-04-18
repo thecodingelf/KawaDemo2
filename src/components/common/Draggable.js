@@ -16,6 +16,7 @@ export default class Draggable extends Component {
             scale: new Animated.Value(1)
         };
     }
+
     componentWillMount() {
         this._panResponder = PanResponder.create({
             onMoveShouldSetResponderCapture: () => true,
@@ -42,7 +43,10 @@ export default class Draggable extends Component {
     }
 
     render() {
-        const { elementStyle } = styles;
+        const size = {
+            width: this.props.width,
+            height: this.props.height,
+        }
         let { pan, scale } = this.state;
         let rotate = '0deg';
         // Calculate the x and y transform from the pan value
@@ -50,6 +54,7 @@ export default class Draggable extends Component {
         // Calculate the transform property and set it as a value for our style which we add below to the Animated.View component
         let imageStyle = { transform: [{ translateX }, { translateY }, { rotate }, { scale }] };
         const panStyle = {
+            ...size,
             transform: this.state.pan.getTranslateTransform()
         }
         return (
@@ -58,7 +63,7 @@ export default class Draggable extends Component {
                 style={[panStyle]}
             >
                 <Image
-                    style={elementStyle}
+                    style={size}
                     source={this.props.source}
                 />
             </Animated.View>

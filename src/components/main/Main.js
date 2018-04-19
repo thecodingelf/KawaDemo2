@@ -13,7 +13,7 @@ const instructions = Platform.select({
 });
 
 
-class EnterForm extends Component {
+class Main extends Component {
 
   render() {
     const { containerStyle, welcomeStyle, instructionsStyle } = styles;
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EnterForm
+export default Main

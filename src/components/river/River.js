@@ -16,7 +16,7 @@ import Rock from '../draggables/rock'
 import Tree from '../draggables/tree';
 import Flower from '../draggables/flower';
 
-class Home extends Component {
+class River extends Component {
 
     render() {
         const {
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Home
+export default River

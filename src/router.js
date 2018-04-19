@@ -1,8 +1,8 @@
 import React from 'react'
 import { Scene, Router } from 'react-native-router-flux'
 
-import EnterForm from './components/enterform/EnterForm'
-import Home from './components/home/Home'
+import Main from './components/main/Main'
+import River from './components/river/River'
 import MyRivers from './components/myrivers/MyRivers';
 import Information from './components/info/Information';
 
@@ -13,14 +13,14 @@ const RouterComponent = () => {
                 <Scene key="client" hideNavBar>
                     <Scene
                         key="name"
-                        component={EnterForm}
+                        component={Main}
                         initial
                     />
                 </Scene>
                 <Scene key="main" hideNavBar>
                     <Scene
-                        key="home"
-                        component={Home}
+                        key="river"
+                        component={River}
                     />
                 </Scene>
                 <Scene key="rivers" hideNavBar>

@@ -7,25 +7,6 @@ life has been.
 The application offers modern way to this therapy model where client can
 drag and drop the elements to the view.
 
-### Kawa app todo list
-
-- [x] Boilerplate.
-- [x] Draggable Objects using panresponder.
-- [x] Fab menu.
-- [ ] Submenu.
-- [x] Firebase config.
-- [ ] Setting up Firebase.
-- [ ] Save coords of the elements to firebase.
-- [ ] Save river.
-- [ ] Select Saved river from gallery.
-- [ ] Record voice and save to db.
-- [ ] Text input for the dropped element.
-- [ ] Info page UI.
-- [ ] Change background contrast.
-- [ ] Filters for background.
-- [ ] Horizontal line on the river.
-- [ ] UI Improvements: Material-UI.
-
 ### Installation
 
 ### With GIT

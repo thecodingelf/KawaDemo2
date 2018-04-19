@@ -15,7 +15,7 @@ drag and drop the elements to the view.
 - [ ] Submenu.
 - [x] Firebase.
 - [ ] Setting up Firebase.
-- [ ] Save coords of the elements to db.
+- [ ] Save coords of the elements to firebase.
 - [ ] Save session.
 - [ ] Select Saved session from gallery.
 - [ ] Record voice and save to db.

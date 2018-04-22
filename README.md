@@ -30,10 +30,11 @@ $ npm install -g react-native-cli
 ```
 $ npm install
 ```
+
 3. Choose your environment by copying the appropriate .env.* file to .env file
-```
-$ cp .env.development .env
-```
++```
++$ cp .env.development .env
++```
 
 Then, to run it, cd into `(where you clone or unzipped the repository)` and run:
 before this you need to enable developer mode in your phone and connect your phone

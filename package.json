@@ -1,5 +1,5 @@
 {
-  "name": "KawaDemo2",
+  "name": "kawademo2",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
     "react": "16.2.0",
     "react-native": "^0.54.1",
     "react-native-action-button": "^2.8.4",
+    "react-native-config": "^0.11.5",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-vector-icons": "^4.6.0"
   },

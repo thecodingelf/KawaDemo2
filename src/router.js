@@ -1,6 +1,7 @@
 import React from 'react'
-import { Scene, Router } from 'react-native-router-flux'
-
+import { Scene, Router, Actions } from 'react-native-router-flux'
+import LoginForm from './components/authentication/LoginForm'
+import SignUpForm from './components/authentication/SignUpForm'
 import Main from './components/main/Main'
 import River from './components/river/River'
 import MyRivers from './components/myrivers/MyRivers';
@@ -10,11 +11,24 @@ const RouterComponent = () => {
     return (
         <Router>
             <Scene key="root" hideNavBar>
-                <Scene key="client" hideNavBar>
+                <Scene key="auth">
                     <Scene
-                        key="name"
-                        component={Main}
+                        rightTitle="Sign Up"
+                        onRight={() => Actions.signUp()}
+                        key="login"
+                        component={LoginForm}
                         initial
+                    />
+                </Scene>
+                <Scene key="client" hideNavBar>
+                <Scene
+                        key="signUp"
+                        component={SignUpForm}
+                        initial
+                    />
+                    <Scene
+                        key="menu"
+                        component={Main}
                     />
                 </Scene>
                 <Scene key="main" hideNavBar>

@@ -12,7 +12,6 @@ const instructions = Platform.select({
   android: 'Coming soon!',
 });
 
-
 class Main extends Component {
 
   render() {

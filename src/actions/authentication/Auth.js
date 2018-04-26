@@ -5,8 +5,10 @@ export const LOGIN_USER = 'login_user'
 export const LOGIN_USER_SUCCESS = 'login_user_success'
 export const LOGIN_USER_FAIL = 'login_user_fail'
 export const CREATE_USER = 'create_user'
-export const CREATE_USER_SUCCESS = 'create_user_success'
 export const CREATE_USER_FAIL = 'create_user_fail'
+export const EMAIL_CHANGED = 'email_changed'
+export const PASSWORD_CHANGED = 'password_changed'
+
 
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
@@ -23,7 +25,21 @@ export const createUser = ({ email, password }) => {
         dispatch({ type: CREATE_USER })
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(user => createUserSucess(dispatch, user))
+        .then(Actions.pop())
+    }
+}
+
+export const emailChanged = (text) => {
+    return {
+        type: EMAIL_CHANGED,
+        payload: text
+    }
+}
+
+export const passwordChanged = (text) => {
+    return {
+        type: PASSWORD_CHANGED,
+        payload: text
     }
 }
 
@@ -33,7 +49,7 @@ const loginUserSuccess = (dispatch, user) => {
         payload: user
     })
 
-    Actions.main()
+    Actions.menu()
 }
 
 const loginUserFail = (dispatch) => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
+import { Actions } from 'react-native-router-flux'
 import {
     emailChanged,
     passwordChanged,
@@ -21,26 +22,40 @@ class Loginform extends Component {
     onPasswordChange(text) {
         this.props.passwordChanged(text)
     }
-    onButtonPress() {
+    onLoginPress() {
         const { email, password } = this.props
 
         this.props.loginUser({ email, password })
     }
-    renderButton() {
+    onSignUpPress() {
+        Actions.signUp()
+    }
+    renderLoginButton() {
         if (this.props.loading) {
             return <Spinner size="large" />
         }
         return (
-            <Button onPress={this.onButtonPress.bind(this)}>
+            <Button onPress={this.onLoginPress.bind(this)}>
                 Log In
             </Button>
         )
     }
 
-    render() {
-        const { errorText } = styles
+    renderSignUpButton() {
+        if (this.props.loading) {
+            return <Spinner size="large" />
+        }
         return (
-            <Card>
+            <Button onPress={this.onSignUpPress.bind(this)}>
+                Sign Up
+            </Button>
+        )
+    }
+
+    render() {
+        const { loginContainer, errorText } = styles
+        return (
+            <Card style={loginContainer}>
                 <CardSection>
                     <Input
                         label="Email"
@@ -58,18 +73,23 @@ class Loginform extends Component {
                         value={this.props.password}
                     />
                 </CardSection>
+                <CardSection>
+                    {this.renderLoginButton()}
+                    {this.renderSignUpButton()}
+                </CardSection>
                 <Text style={errorText}>
                     {this.props.error}
                 </Text>
-                <CardSection>
-                    {this.renderButton()}
-                </CardSection>
             </Card>
         )
     }
 }
 
 const styles = {
+    loginContainer: {
+        marginTop: 50,
+        padding: 10,
+    },
     errorText: {
         fontSize: 20,
         alignSelf: 'center',

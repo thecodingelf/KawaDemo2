@@ -13,19 +13,18 @@ const RouterComponent = () => {
             <Scene key="root" hideNavBar>
                 <Scene key="auth">
                     <Scene
-                        rightTitle="Sign Up"
-                        onRight={() => Actions.signUp()}
+                        hideNavBar
                         key="login"
                         component={LoginForm}
                         initial
                     />
-                </Scene>
-                <Scene key="client" hideNavBar>
-                <Scene
+                    <Scene
                         key="signUp"
                         component={SignUpForm}
-                        initial
                     />
+                </Scene>
+                <Scene key="client" hideNavBar>
+
                     <Scene
                         key="menu"
                         component={Main}

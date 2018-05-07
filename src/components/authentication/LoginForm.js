@@ -42,11 +42,15 @@ class Loginform extends Component {
     }
 
     renderSignUpButton() {
+        const { signUpButtonStyle } = styles
         if (this.props.loading) {
             return <Spinner size="large" />
         }
         return (
-            <Button onPress={this.onSignUpPress.bind(this)}>
+            <Button
+                style={signUpButtonStyle}
+                onPress={this.onSignUpPress.bind(this)}
+            >
                 Sign Up
             </Button>
         )
@@ -94,6 +98,9 @@ const styles = {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
+    },
+    signUpButtonStyle: {
+        borderColor: '#fff',
     }
 }
 

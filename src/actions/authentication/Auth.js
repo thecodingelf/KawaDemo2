@@ -8,7 +8,7 @@ export const CREATE_USER = 'create_user'
 export const CREATE_USER_FAIL = 'create_user_fail'
 export const EMAIL_CHANGED = 'email_changed'
 export const PASSWORD_CHANGED = 'password_changed'
-
+export const USERNAME_CHANGED = 'username_changed'
 
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
@@ -20,11 +20,18 @@ export const loginUser = ({ email, password }) => {
     }
 }
 
-export const createUser = ({ email, password }) => {
+export const createUser = ({ email, password, prop, value }) => {
     return (dispatch) => {
         dispatch({ type: CREATE_USER })
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(
+            firebase.database().ref(`/users/${user.uid}/username`)
+            .push({ username })
+            .then(() => {
+                dispatch({ type: CREATE_USERNAME })
+            })
+        )
         .then(Actions.pop())
     }
 }
@@ -39,6 +46,13 @@ export const emailChanged = (text) => {
 export const passwordChanged = (text) => {
     return {
         type: PASSWORD_CHANGED,
+        payload: text
+    }
+}
+
+export const usernameChanged = (text) => {
+    return {
+        type: USERNAME_CHANGED,
         payload: text
     }
 }

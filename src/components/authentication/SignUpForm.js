@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import {
     emailChanged,
     passwordChanged,
+    usernameChanged,
     createUser
 } from '../../actions/authentication/Auth'
 import {
@@ -21,10 +22,13 @@ class SignUpform extends Component {
     onPasswordChange(text) {
         this.props.passwordChanged(text)
     }
+    onUsernameChange(text) {
+        this.props.usernameChanged(text)
+    }
     onButtonPress() {
-        const { email, password } = this.props
+        const { email, password, username } = this.props
 
-        this.props.createUser({ email, password })
+        this.props.createUser({ email, password, username })
     }
     renderButton() {
         if (this.props.loading) {
@@ -58,6 +62,14 @@ class SignUpform extends Component {
                         value={this.props.password}
                     />
                 </CardSection>
+                <CardSection>
+                    <Input
+                        label="Username"
+                        placeholder="username"
+                        onChangeText={this.onUsernameChange.bind(this)}
+                        value={this.props.username}
+                    />
+                </CardSection>
                 <Text style={errorText}>
                     {this.props.error}
                 </Text>
@@ -78,11 +90,11 @@ const styles = {
 }
 
 const mapStateToProps = ({ auth }) => {
-    const { email, password, error, loading } = auth
+    const { email, password, username, error, loading } = auth
 
-    return { email, password, error, loading }
+    return { email, password, username, error, loading }
 }
 
 export default connect(mapStateToProps, {
-    emailChanged, passwordChanged, createUser
+    emailChanged, passwordChanged, usernameChanged, createUser
 })(SignUpform)

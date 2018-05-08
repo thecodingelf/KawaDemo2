@@ -24,6 +24,7 @@ export const createUser = ({ email, password, prop, value }) => {
     return (dispatch) => {
         dispatch({ type: CREATE_USER })
 
+        const user = firebase.auth().currentUser.uid
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(
             firebase.database().ref(`/users/${user.uid}/username`)

@@ -47,17 +47,21 @@ class Loginform extends Component {
             return <Spinner size="large" />
         }
         return (
-            <Button
+            <Text
                 style={signUpButtonStyle}
                 onPress={this.onSignUpPress.bind(this)}
             >
                 Sign Up
-            </Button>
+            </Text>
         )
     }
 
     render() {
-        const { loginContainer, errorText } = styles
+        const {
+            loginContainer,
+            buttonContainer,
+            buttonView,
+            errorText } = styles
         return (
             <Card style={loginContainer}>
                 <CardSection>
@@ -78,8 +82,14 @@ class Loginform extends Component {
                     />
                 </CardSection>
                 <CardSection>
-                    {this.renderLoginButton()}
-                    {this.renderSignUpButton()}
+                    <View style={buttonContainer}>
+                        <View style={buttonView}>
+                            {this.renderLoginButton()}
+                        </View>
+                        <View style={buttonView}>
+                            {this.renderSignUpButton()}
+                        </View>
+                    </View>
                 </CardSection>
                 <Text style={errorText}>
                     {this.props.error}
@@ -100,8 +110,21 @@ const styles = {
         color: 'red'
     },
     signUpButtonStyle: {
-        borderColor: '#fff',
-    }
+        color: '#007aff',
+        fontWeight: 'bold',
+        padding: 6,
+    },
+    buttonContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonView: {
+        flexDirection: 'row',
+        padding: 4,
+        marginTop: 8,
+    },
 }
 
 const mapStateToProps = ({ auth }) => {

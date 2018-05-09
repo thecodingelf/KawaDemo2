@@ -20,20 +20,19 @@ export const loginUser = ({ email, password }) => {
     }
 }
 
-export const createUser = ({ email, password, prop, value }) => {
+export const createUser = (email, password, username) => {
     return (dispatch) => {
         dispatch({ type: CREATE_USER })
 
-        const user = firebase.auth().currentUser.uid
         firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(
-            firebase.database().ref(`/users/${user.uid}/username`)
-            .push({ username })
-            .then(() => {
-                dispatch({ type: CREATE_USERNAME })
-            })
-        )
-        .then(Actions.pop())
+            .then(user => {
+                if (user.uid) {
+                    firebase.database().ref(`/users/${user.uid}/`)
+                        .set({ username: username })
+                }
+            }
+            )
+            .then(Actions.pop())
     }
 }
 

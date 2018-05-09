@@ -16,6 +16,15 @@ import {
 } from '../common'
 
 class SignUpform extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            username: "",
+
+        };
+    } //End of Constructor
     onEmailChange(text) {
         this.props.emailChanged(text)
     }
@@ -26,9 +35,7 @@ class SignUpform extends Component {
         this.props.usernameChanged(text)
     }
     onButtonPress() {
-        const { email, password, username } = this.props
-
-        this.props.createUser({ email, password, username })
+        this.props.createUser(this.state.email, this.state.password, this.state.username)
     }
     renderButton() {
         if (this.props.loading) {
@@ -49,8 +56,8 @@ class SignUpform extends Component {
                     <Input
                         label="Email"
                         placeholder="email@gmail.com"
-                        onChangeText={this.onEmailChange.bind(this)}
-                        value={this.props.email}
+                        onChangeText={(value) => this.setState({ email: value })}
+                        value={this.state.email}
                     />
                 </CardSection>
                 <CardSection>
@@ -58,16 +65,16 @@ class SignUpform extends Component {
                         secureTextEntry
                         label="Password"
                         placeholder="******"
-                        onChangeText={this.onPasswordChange.bind(this)}
-                        value={this.props.password}
+                        onChangeText={(value) => this.setState({ password: value })}
+                        value={this.state.password}
                     />
                 </CardSection>
                 <CardSection>
                     <Input
                         label="Username"
                         placeholder="username"
-                        onChangeText={this.onUsernameChange.bind(this)}
-                        value={this.props.username}
+                        onChangeText={(value) => this.setState({ username: value })}
+                        value={this.state.username}
                     />
                 </CardSection>
                 <Text style={errorText}>

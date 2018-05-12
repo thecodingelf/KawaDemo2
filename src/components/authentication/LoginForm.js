@@ -43,9 +43,6 @@ class Loginform extends Component {
 
     renderSignUpButton() {
         const { signUpButtonStyle } = styles
-        if (this.props.loading) {
-            return <Spinner size="large" />
-        }
         return (
             <Text
                 style={signUpButtonStyle}

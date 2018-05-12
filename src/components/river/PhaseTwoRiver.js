@@ -8,16 +8,11 @@ import {
     PanResponder,
     Animated
 } from 'react-native'
-import { Actions } from 'react-native-router-flux'
 import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Header, Draggable } from '../common'
-import SubMenu from '../submenu/SubMenu'
 import Rock from '../draggables/rock'
-import Tree from '../draggables/tree'
-import Flower from '../draggables/flower'
-
-class River extends Component {
+class PhaseTwoRiver extends Component {
 
     render() {
         const {
@@ -27,22 +22,19 @@ class River extends Component {
             actionButtonImage,
             buttonStyle,
             backgroundStyle,
-        } = styles
+        } = styles;
         return (
             <View style={containerStyle}>
+
                 <Header
                     headerText={'Kawa'}
                 />
-
-                <SubMenu />
 
                 <ImageBackground
                     source={require('../../assets/images/river2.png')}
                     style={backgroundStyle}
                 >
-                    <Tree />
                     <Rock />
-                    <Flower />
                 </ImageBackground>
 
                 <ActionButton
@@ -108,4 +100,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default River
+export default PhaseTwoRiver

@@ -6,4 +6,3 @@ export * from './Input';
 export * from './Spinner';
 export * from './Confirm';
 export * from './Draggable';
-export * from './SubMenu';

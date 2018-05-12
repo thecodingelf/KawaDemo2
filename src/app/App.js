@@ -1,12 +1,24 @@
-import React, { Component } from 'react'
-import Router from '../router'
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import firebase from 'firebase';
+import { FIREBASE_CONFIG } from './Credentials';
+import ReduxThunk from 'redux-thunk';
+import reducers from '../reducers';
+import LoginForm from '../components/authentication/LoginForm';
+import Router from '../Router';
 
 class App extends Component {
+  componentWillMount() {
+    firebase.initializeApp(FIREBASE_CONFIG)
+  }
 
   render() {
-
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
     return (
-      <Router />
+      <Provider store={store}>
+        <Router />
+      </Provider>
     )
   }
 }

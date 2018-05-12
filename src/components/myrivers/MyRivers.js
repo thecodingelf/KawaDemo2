@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
     sectionHeaderStyle: {
         fontSize: 20,
         padding: 5,
+        backgroundColor: 'steelblue',
+        color: '#fff',
     },
     sectionListItemStyle: {
         fontSize: 15,

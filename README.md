@@ -7,25 +7,6 @@ life has been.
 The application offers modern way to this therapy model where client can
 drag and drop the elements to the view.
 
-### Kawa app todo list
-
-- [x] Boilerplate.
-- [x] Draggable Objects using panresponder.
-- [x] Fab menu.
-- [ ] Submenu.
-- [x] Firebase config.
-- [ ] Setting up Firebase.
-- [ ] Save coords of the elements to firebase.
-- [ ] Save river.
-- [ ] Select Saved river from gallery.
-- [ ] Record voice and save to db.
-- [ ] Text input for the dropped element.
-- [ ] Info page UI.
-- [ ] Change background contrast.
-- [ ] Filters for background.
-- [ ] Horizontal line on the river.
-- [ ] UI Improvements: Material-UI.
-
 ### Installation
 
 ### With GIT
@@ -49,10 +30,11 @@ $ npm install -g react-native-cli
 ```
 $ npm install
 ```
+
 3. Choose your environment by copying the appropriate .env.* file to .env file
-```
-$ cp .env.development .env
-```
++```
++$ cp .env.development .env
++```
 
 Then, to run it, cd into `(where you clone or unzipped the repository)` and run:
 before this you need to enable developer mode in your phone and connect your phone

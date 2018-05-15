@@ -37,7 +37,8 @@ export default class Draggable extends Component {
             ]),
             onPanResponderRelease: (e, { vx, vy }) => {
                 //   Flatten the offset to avoid erratic behavior
-                this.state.pan.flattenOffset();
+                this.state.pan.flattenOffset()
+                this.setState({coordX: vx, coordY: vy})
             }
         });
     }
@@ -78,4 +79,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export { Draggable };
+export { Draggable }

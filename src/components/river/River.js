@@ -11,6 +11,7 @@ import {
 import { Actions } from 'react-native-router-flux'
 import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { saveDraggable } from '../../actions/draggable/Draggable'
 import { Header, Draggable } from '../common'
 import SubMenu from '../submenu/SubMenu'
 import Rock from '../draggables/rock'
@@ -18,7 +19,9 @@ import Tree from '../draggables/tree'
 import Flower from '../draggables/flower'
 
 class River extends Component {
-
+    onSavePress() {
+        this.props.saveDraggable(this.state.coordX, this.state.coordY, { uid: this.props.user })
+    }
     render() {
         const {
             elementStyle,
@@ -30,9 +33,6 @@ class River extends Component {
         } = styles
         return (
             <View style={containerStyle}>
-                <Header
-                    headerText={'Kawa'}
-                />
 
                 <SubMenu />
 
@@ -77,6 +77,16 @@ class River extends Component {
                         <Image
                             source={require('../../assets/images/flower1-01-01.png')}
                             style={actionButtonImage}
+                        />
+                    </ActionButton.Item>
+                    <ActionButton.Item
+                        buttonColor='#3498db'
+                        title="Save"
+                        onPress={this.onSavePress.bind(this)}
+                    >
+                        <Icon
+                            name="md-cloud-upload"
+                            size={30}
                         />
                     </ActionButton.Item>
                 </ActionButton>

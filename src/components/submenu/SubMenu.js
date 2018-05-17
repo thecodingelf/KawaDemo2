@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import ActionButton from 'react-native-action-button'
-import Icon from 'react-native-vector-icons/Ionicons'
 
 class SubMenu extends Component {
 
@@ -20,10 +19,6 @@ class SubMenu extends Component {
                     title="Save"
                     onPress={this.onSavePress.bind(this)}
                 >
-                    <Icon
-                        name="md-cloud-upload"
-                        size={30}
-                    />
                 </ActionButton.Item>
             </ActionButton>
         )

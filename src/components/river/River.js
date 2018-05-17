@@ -3,17 +3,17 @@ import {
     View,
     Text,
     Image,
+    Button,
     ImageBackground,
     StyleSheet,
     PanResponder,
     Animated
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import ActionButton from 'react-native-action-button'
-import Icon from 'react-native-vector-icons/Ionicons'
+// import ActionButton from 'react-native-action-button'
 import { saveDraggable } from '../../actions/draggable/Draggable'
 import { Header, Draggable } from '../common'
-import SubMenu from '../submenu/SubMenu'
+// import SubMenu from '../submenu/SubMenu'
 import Rock from '../draggables/rock'
 import Tree from '../draggables/tree'
 import Flower from '../draggables/flower'
@@ -34,7 +34,10 @@ class River extends Component {
         return (
             <View style={containerStyle}>
 
-                <SubMenu />
+                <Button 
+                    title="Save"
+                    onPress={this.onSavePress.bind(this)}
+                />
 
                 <ImageBackground
                     source={require('../../assets/images/river2.png')}
@@ -45,7 +48,7 @@ class River extends Component {
                     <Flower />
                 </ImageBackground>
 
-                <ActionButton
+{/*                 <ActionButton
                     buttonColor="rgba(231,76,60,1)"
                     fixNativeFeedbackRadius // Fixes ripple effect overflow, doesn't work on children :(
                 >
@@ -84,12 +87,8 @@ class River extends Component {
                         title="Save"
                         onPress={this.onSavePress.bind(this)}
                     >
-                        <Icon
-                            name="md-cloud-upload"
-                            size={30}
-                        />
                     </ActionButton.Item>
-                </ActionButton>
+                </ActionButton> */}
             </View>
         )
     }

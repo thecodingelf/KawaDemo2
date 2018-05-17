@@ -13,7 +13,9 @@ export default class Draggable extends Component {
 
         this.state = {
             pan: new Animated.ValueXY(),
-            scale: new Animated.Value(1)
+            scale: new Animated.Value(1),
+            coordX: '',
+            coordY: '',
         };
     }
 

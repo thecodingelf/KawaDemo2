@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import ActionButton from 'react-native-action-button'
 
 class SubMenu extends Component {
 
@@ -10,17 +9,16 @@ class SubMenu extends Component {
     }
     render() {
         return (
-            <ActionButton
-                buttonColor="rgba(231,76,60,1)"
-                fixNativeFeedbackRadius // Fixes ripple effect overflow, doesn't work on children :(
-            >
-                <ActionButton.Item
-                    buttonColor='#3498db'
-                    title="Save"
-                    onPress={this.onSavePress.bind(this)}
-                >
-                </ActionButton.Item>
-            </ActionButton>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <TouchableWithoutFeedback onPress={() => this.animateSubMenu()}>
+                        <View style={styles.button} />
+                    </TouchableWithoutFeedback>
+                    <Text>Header Text</Text>
+                    <View style={styles.button2} />
+                    <Animated.View style={[styles.subMenu, { height: this.state.animHeight }]} />
+                </View>
+            </View>
         )
     }
 }

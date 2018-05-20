@@ -10,12 +10,9 @@ export default class Draggable extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             pan: new Animated.ValueXY(),
             scale: new Animated.Value(1),
-            coordX: '',
-            coordY: '',
         };
     }
 
@@ -40,7 +37,7 @@ export default class Draggable extends Component {
             onPanResponderRelease: (e, { vx, vy }) => {
                 //   Flatten the offset to avoid erratic behavior
                 this.state.pan.flattenOffset()
-                this.setState({coordX: vx, coordY: vy})
+                this.props.setCoordinates(vx, vy, this.props.itemLabel)
             }
         });
     }

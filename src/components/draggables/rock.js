@@ -10,6 +10,7 @@ const BASE_SCALE = 0.5;
 
 export default Rock = ({ scale = 1 }) => (
   <Draggable
+    itemLabel={'rock'}
     width={WIDTH * BASE_SCALE * scale}
     height={HEIGHT * BASE_SCALE * scale}
     source={require('../../assets/images/rock1-01.png')}

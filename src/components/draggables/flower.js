@@ -10,6 +10,7 @@ const BASE_SCALE = 0.6;
 
 export default Tree = ({ scale = 1 }) => (
   <Draggable
+    itemLabel={'flower'}
     width={WIDTH * BASE_SCALE * scale}
     height={HEIGHT * BASE_SCALE * scale}
     source={require('../../assets/images/flower1-01-01.png')}

@@ -10,7 +10,6 @@ import {
     Animated
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-// import ActionButton from 'react-native-action-button'
 import { saveDraggable } from '../../actions/draggable/Draggable'
 import { Header, Draggable } from '../common'
 // import SubMenu from '../submenu/SubMenu'
@@ -19,8 +18,23 @@ import Tree from '../draggables/tree'
 import Flower from '../draggables/flower'
 
 class River extends Component {
+    setDraggable = ({ x, y, item }) => {
+        switch (item) {
+            case 'tree':
+                this.setState({ treeCoordX: x, treeCoordY: y })
+                break;
+            case 'rock':
+                this.setState({ treeCoordX: x, treeCoordY: y })
+                break;
+            case 'flower':
+                this.setState({ treeCoordX: x, treeCoordY: y })
+                break;
+        }
+    }
     onSavePress() {
-        this.props.saveDraggable(this.state.coordX, this.state.coordY, { uid: this.props.user })
+        this.props.saveDraggable = ({ x, y }) => {
+            this.setState({ coordX: x, coordY: y })
+        }
     }
     render() {
         const {
@@ -33,62 +47,18 @@ class River extends Component {
         } = styles
         return (
             <View style={containerStyle}>
-
-                <Button 
+                <Button
                     title="Save"
-                    onPress={this.onSavePress.bind(this)}
+                    onPress={() => this.props.saveDraggable(this.state.coordX, this.state.coordY)}
                 />
-
                 <ImageBackground
                     source={require('../../assets/images/river2.png')}
                     style={backgroundStyle}
                 >
-                    <Tree />
-                    <Rock />
-                    <Flower />
+                    <Tree setCoordinates={this.setDraggable} />
+                    <Rock setCoordinates={this.setDraggable} />
+                    <Flower setCoordinates={this.setDraggable} />
                 </ImageBackground>
-
-{/*                 <ActionButton
-                    buttonColor="rgba(231,76,60,1)"
-                    fixNativeFeedbackRadius // Fixes ripple effect overflow, doesn't work on children :(
-                >
-                    <ActionButton.Item
-                        buttonColor='#9b59b6'
-                        title="Tree"
-                        onPress={() => { }}
-                    >
-                        <Image
-                            source={require('../../assets/images/tree1-01.png')}
-                            style={actionButtonImage}
-                        />
-                    </ActionButton.Item>
-                    <ActionButton.Item
-                        buttonColor='#3498db'
-                        title="Rock"
-                        onPress={() => { }}
-                    >
-                        <Image
-                            source={require('../../assets/images/rock1-01.png')}
-                            style={actionButtonImage}
-                        />
-                    </ActionButton.Item>
-                    <ActionButton.Item
-                        buttonColor='#4950dc'
-                        title="Flower"
-                        onPress={() => { }}
-                    >
-                        <Image
-                            source={require('../../assets/images/flower1-01-01.png')}
-                            style={actionButtonImage}
-                        />
-                    </ActionButton.Item>
-                    <ActionButton.Item
-                        buttonColor='#3498db'
-                        title="Save"
-                        onPress={this.onSavePress.bind(this)}
-                    >
-                    </ActionButton.Item>
-                </ActionButton> */}
             </View>
         )
     }
@@ -114,6 +84,12 @@ const styles = StyleSheet.create({
     backgroundStyle: {
         width: '100%',
         height: '100%',
+    },
+    subMenuStyle: {
+        position: 'absolute',
+        top: 20,
+        left: 20,
+        right: 10,
     }
 });
 

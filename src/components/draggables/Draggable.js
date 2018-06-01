@@ -5,6 +5,9 @@ import {
     PanResponder,
     Animated
 } from 'react-native'
+/* import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as draggableActions from '../../actions/Draggable-actions' */
 
 export default class Draggable extends Component {
 
@@ -71,6 +74,16 @@ export default class Draggable extends Component {
     }
 }
 
+/* function mapStateToProps(state) {
+    return {
+        ...state.draggable
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ ...draggableActions }, dispatch)
+}
+ */
 const styles = StyleSheet.create({
     elementStyle: {
         width: 80,
@@ -78,4 +91,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export { Draggable }
+/* export default connect(
+    mapStateToProps, mapDispatchToProps, null, { 
+        withRef: true 
+})(Draggable) */

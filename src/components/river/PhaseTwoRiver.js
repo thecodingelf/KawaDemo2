@@ -8,8 +8,7 @@ import {
     PanResponder,
     Animated
 } from 'react-native'
-import { Header, Draggable } from '../common'
-import Rock from '../draggables/rock'
+import { Header } from '../common'
 class PhaseTwoRiver extends Component {
 
     render() {
@@ -32,7 +31,6 @@ class PhaseTwoRiver extends Component {
                     source={require('../../assets/images/river2.png')}
                     style={backgroundStyle}
                 >
-                    <Rock />
                 </ImageBackground>
 
             </View>

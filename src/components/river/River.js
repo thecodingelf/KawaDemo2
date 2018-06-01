@@ -10,27 +10,22 @@ import {
     Animated
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import { saveDraggable } from '../../actions/draggable/Draggable'
-import { Header, Draggable } from '../common'
+import { saveDraggable } from '../../actions/Draggable-actions'
+import { Header, Draggable} from '../common'
 // import SubMenu from '../submenu/SubMenu'
-import Rock from '../draggables/rock'
-import Tree from '../draggables/tree'
+import Tree from '../draggables/Tree'
+/* import Rock from '../draggables/rock'
 import Flower from '../draggables/flower'
+ */
 
+ // Only modify these if the source image has been modifier
+const WIDTH = 73
+const HEIGHT = 100
+
+// Modify this to change the base size of the image
+const BASE_SCALE = 0.75;
+const scale = 1
 class River extends Component {
-    setDraggable = ({ x, y, item }) => {
-        switch (item) {
-            case 'tree':
-                this.setState({ treeCoordX: x, treeCoordY: y })
-                break;
-            case 'rock':
-                this.setState({ treeCoordX: x, treeCoordY: y })
-                break;
-            case 'flower':
-                this.setState({ treeCoordX: x, treeCoordY: y })
-                break;
-        }
-    }
     onSavePress() {
         this.props.saveDraggable = ({ x, y }) => {
             this.setState({ coordX: x, coordY: y })
@@ -55,9 +50,14 @@ class River extends Component {
                     source={require('../../assets/images/river2.png')}
                     style={backgroundStyle}
                 >
-                    <Tree setCoordinates={this.setDraggable} />
-                    <Rock setCoordinates={this.setDraggable} />
-                    <Flower setCoordinates={this.setDraggable} />
+                    <Draggable
+    itemLabel={'tree'}
+    width={WIDTH * BASE_SCALE * scale}
+    height={HEIGHT * BASE_SCALE * scale}
+    source={require('../../assets/images/tree1-01.png')}
+  />
+{/*                     <Rock />
+                    <Flower /> */}
                 </ImageBackground>
             </View>
         )

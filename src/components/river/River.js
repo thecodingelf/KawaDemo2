@@ -10,26 +10,24 @@ import {
     Animated
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as draggableActions from '../../actions/Draggable-actions'
 import { saveDraggable } from '../../actions/Draggable-actions'
-import { Header, Draggable} from '../common'
+import { Header, Draggable } from '../common'
 // import SubMenu from '../submenu/SubMenu'
-import Tree from '../draggables/Tree'
+import Tree from '../draggables/tree'
 /* import Rock from '../draggables/rock'
-import Flower from '../draggables/flower'
- */
+import Flower from '../draggables/flower' */
 
- // Only modify these if the source image has been modifier
-const WIDTH = 73
-const HEIGHT = 100
+// Only modify these if the source image has been modifier
 
 // Modify this to change the base size of the image
-const BASE_SCALE = 0.75;
-const scale = 1
 class River extends Component {
     onSavePress() {
-        this.props.saveDraggable = ({ x, y }) => {
-            this.setState({ coordX: x, coordY: y })
-        }
+        // this.props.saveDraggable(this.props.treeX, this.props.treeY)
+        console.log("CURRENT USER:", this.props.user)
+        console.log("TreeX:",this.props.treeX, "TreeY:", this.props.treeY)
     }
     render() {
         const {
@@ -44,24 +42,29 @@ class River extends Component {
             <View style={containerStyle}>
                 <Button
                     title="Save"
-                    onPress={() => this.props.saveDraggable(this.state.coordX, this.state.coordY)}
+                    onPress={() => this.onSavePress()}
                 />
                 <ImageBackground
                     source={require('../../assets/images/river2.png')}
                     style={backgroundStyle}
                 >
-                    <Draggable
-    itemLabel={'tree'}
-    width={WIDTH * BASE_SCALE * scale}
-    height={HEIGHT * BASE_SCALE * scale}
-    source={require('../../assets/images/tree1-01.png')}
-  />
-{/*                     <Rock />
+                    <Tree />
+ {/*                    <Rock />
                     <Flower /> */}
                 </ImageBackground>
             </View>
         )
     }
+}
+
+function mapStateToProps(state) {
+    return {
+        ...state.auth,
+        ...state.river
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ ...draggableActions }, dispatch)
 }
 
 const styles = StyleSheet.create({
@@ -93,4 +96,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default River
+export default connect(
+    mapStateToProps, mapDispatchToProps, null, { 
+        withRef: true 
+})(River)

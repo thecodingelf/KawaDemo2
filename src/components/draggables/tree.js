@@ -1,5 +1,5 @@
 import React from 'react'
-import { Draggable } from './Draggable'
+import Draggable from './Draggable'
 
 // Only modify these if the source image has been modifier
 const WIDTH = 73

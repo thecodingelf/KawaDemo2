@@ -1,10 +1,17 @@
 import firebase from 'firebase'
 import { Actions } from 'react-native-router-flux'
 import FirebaseHandler from '../handlers/firebasehandlers/FirebaseHandlers'
+import {
+    SAVE_DRAGGABLE,
+    SAVE_TREE_XCOORDINATES,
+    SAVE_TREE_YCOORDINATES,
+    SAVE_ROCK_XCOORDINATES,
+    SAVE_ROCK_YCOORDINATES,
+    SAVE_FLOWER_XCOORDINATES,
+    SAVE_FLOWER_YCOORDINATES,
+} from './types'
 
-export const SAVE_DRAGGABLE = 'save_draggable'
-
-export const saveDraggable = ({ coordX, coordY }) => {
+export const saveDraggable = ( coordX, coordY ) => {
     return (dispatch) => {
         dispatch({ type: SAVE_DRAGGABLE })
 

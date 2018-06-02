@@ -11,30 +11,25 @@ import {
     SAVE_FLOWER_YCOORDINATES,
 } from './types'
 
-export const saveDraggable = ( coordX, coordY ) => {
+export const saveDraggable = (x, y, user, item) => {
     return (dispatch) => {
-        dispatch({ type: SAVE_DRAGGABLE })
-
-        FirebaseHandler.setCoordinates(coordX, coordY)
+        FirebaseHandler.setCoordinates(x, y, user, item)
     }
 }
 
 export const setCoordinates = (coordX, coordY, itemLabel) => {
-    return (dispatch) => {
-        console.log("ITEM LABEL:",itemLabel)
-        switch (itemLabel) {
-            case 'tree':
-                dispatch({ type: SAVE_TREE_XCOORDINATES, payload: coordX })
-                dispatch({ type: SAVE_TREE_YCOORDINATES, payload: coordY })
-                break;
-            case 'rock':
-                dispatch({ type: SAVE_ROCK_XCOORDINATES, payload: coordX })
-                dispatch({ type: SAVE_ROCK_YCOORDINATES, payload: coordY })
-                break;
-            case 'flower':
-                dispatch({ type: SAVE_FLOWER_XCOORDINATES, payload: coordX })
-                dispatch({ type: SAVE_FLOWER_YCOORDINATES, payload: coordY })
-                break;
+    console.log("X:", coordX, "\nY:", coordY, "\nITEM LABEL:", itemLabel)
+    return function (dispatch) {
+
+        if (itemLabel == 'tree') {
+            dispatch({ type: SAVE_TREE_XCOORDINATES, payload: coordX })
+            dispatch({ type: SAVE_TREE_YCOORDINATES, payload: coordY })
+        } else if (itemLabel == 'rock') {
+            dispatch({ type: SAVE_ROCK_XCOORDINATES, payload: coordX })
+            dispatch({ type: SAVE_ROCK_YCOORDINATES, payload: coordY })
+        } else if (itemLabel == 'flower') {
+            dispatch({ type: SAVE_FLOWER_XCOORDINATES, payload: coordX })
+            dispatch({ type: SAVE_FLOWER_YCOORDINATES, payload: coordY })
         }
     }
 }

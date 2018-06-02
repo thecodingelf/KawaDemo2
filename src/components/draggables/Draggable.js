@@ -74,9 +74,10 @@ class Draggable extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     return {
-        ...state.draggable
+        ...state.draggable,
+    ...ownProps
     }
 }
 function mapDispatchToProps(dispatch) {

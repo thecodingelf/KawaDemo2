@@ -17,17 +17,17 @@ import { saveDraggable } from '../../actions/Draggable-actions'
 import { Header, Draggable } from '../common'
 // import SubMenu from '../submenu/SubMenu'
 import Tree from '../draggables/tree'
-/* import Rock from '../draggables/rock'
-import Flower from '../draggables/flower' */
+import Rock from '../draggables/rock'
+import Flower from '../draggables/flower'
 
 // Only modify these if the source image has been modifier
 
 // Modify this to change the base size of the image
 class River extends Component {
     onSavePress() {
-        // this.props.saveDraggable(this.props.treeX, this.props.treeY)
-        console.log("CURRENT USER:", this.props.user)
-        console.log("TreeX:",this.props.treeX, "TreeY:", this.props.treeY)
+        this.props.saveDraggable(this.props.treeX, this.props.treeY, this.props.user, 'tree')
+        this.props.saveDraggable(this.props.rockX, this.props.rockY, this.props.user, 'rock')
+        this.props.saveDraggable(this.props.flowerX, this.props.flowerY, this.props.user, 'flower')
     }
     render() {
         const {
@@ -49,8 +49,8 @@ class River extends Component {
                     style={backgroundStyle}
                 >
                     <Tree />
- {/*                    <Rock />
-                    <Flower /> */}
+                    <Rock />
+                    <Flower />
                 </ImageBackground>
             </View>
         )
@@ -60,7 +60,7 @@ class River extends Component {
 function mapStateToProps(state) {
     return {
         ...state.auth,
-        ...state.river
+        ...state.draggable
     }
 }
 function mapDispatchToProps(dispatch) {

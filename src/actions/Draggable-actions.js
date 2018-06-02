@@ -21,7 +21,7 @@ export const saveDraggable = ( coordX, coordY ) => {
 
 export const setCoordinates = (coordX, coordY, itemLabel) => {
     return (dispatch) => {
-
+        console.log("ITEM LABEL:",itemLabel)
         switch (itemLabel) {
             case 'tree':
                 dispatch({ type: SAVE_TREE_XCOORDINATES, payload: coordX })

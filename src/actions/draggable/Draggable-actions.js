@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 import { Actions } from 'react-native-router-flux'
-import FirebaseHandler from '../handlers/firebasehandlers/FirebaseHandlers'
+import FirebaseHandler from '../../handlers/firebasehandlers/FirebaseHandlers'
 import {
     SAVE_DRAGGABLE,
     SAVE_TREE_XCOORDINATES,
@@ -9,11 +9,14 @@ import {
     SAVE_ROCK_YCOORDINATES,
     SAVE_FLOWER_XCOORDINATES,
     SAVE_FLOWER_YCOORDINATES,
-} from './types'
+} from '../types/types'
 
 export const saveDraggable = (x, y, user, item) => {
     return (dispatch) => {
         FirebaseHandler.setCoordinates(x, y, user, item)
+        .then(
+            Actions.phasetwo()
+        )
     }
 }
 

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import AuthReducer from './AuthReducer'
-import DraggableReducer from './Draggable-reducer'
+import AuthReducer from './authentication/AuthReducer'
+import DraggableReducer from './draggable/Draggable-reducer'
 
 export default combineReducers({
     auth: AuthReducer,

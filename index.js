@@ -1,4 +1,8 @@
-import { AppRegistry } from 'react-native';
-import App from './src/app/App';
+import { AppRegistry } from 'react-native'
+import App from './src/app/App'
 
-AppRegistry.registerComponent('KawaDemo2', () => App);
+console.ignoredYellowBox = [
+    'Setting a timer'
+]
+
+AppRegistry.registerComponent('KawaDemo2', () => App)

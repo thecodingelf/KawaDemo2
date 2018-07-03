@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as draggableActions from '../../actions/Draggable-actions'
+import * as draggableActions from '../../actions/draggable/Draggable-actions'
 
 class Draggable extends Component {
 

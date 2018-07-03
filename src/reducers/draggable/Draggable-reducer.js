@@ -5,7 +5,7 @@ import {
     SAVE_ROCK_YCOORDINATES,
     SAVE_FLOWER_XCOORDINATES,
     SAVE_FLOWER_YCOORDINATES,
-} from '../actions/types'
+} from '../../actions/types/types'
 
 const INITIAL_STATE = {
     treeX: '',

@@ -5,16 +5,18 @@ import {
     PanResponder,
     Animated
 } from 'react-native'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as draggableActions from '../../actions/Draggable-actions'
 
-export default class Draggable extends Component {
+class Draggable extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             pan: new Animated.ValueXY(),
-            scale: new Animated.Value(1)
-        };
+            scale: new Animated.Value(1),
+        }
     }
 
     componentWillMount() {
@@ -37,7 +39,8 @@ export default class Draggable extends Component {
             ]),
             onPanResponderRelease: (e, { vx, vy }) => {
                 //   Flatten the offset to avoid erratic behavior
-                this.state.pan.flattenOffset();
+                this.state.pan.flattenOffset()
+                this.props.setCoordinates(vx, vy, this.props.itemLabel)
             }
         });
     }
@@ -71,6 +74,16 @@ export default class Draggable extends Component {
     }
 }
 
+function mapStateToProps(state, ownProps) {
+    return {
+        ...state.draggable,
+    ...ownProps
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ ...draggableActions }, dispatch)
+}
+
 const styles = StyleSheet.create({
     elementStyle: {
         width: 80,
@@ -78,4 +91,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export { Draggable };
+export default connect(
+    mapStateToProps, mapDispatchToProps, null, { 
+        withRef: true 
+})(Draggable)

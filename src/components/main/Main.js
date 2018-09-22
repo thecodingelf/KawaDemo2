@@ -8,8 +8,8 @@ import { Actions } from 'react-native-router-flux'
 import { Card, CardSection, Button, Input } from '../common';
 
 const instructions = Platform.select({
-  ios: 'Comig soon!',
-  android: 'Coming soon!',
+  ios: 'More features coming soon!',
+  android: 'More features coming soon!',
 });
 
 class Main extends Component {
@@ -23,7 +23,7 @@ class Main extends Component {
           Welcome to Kawa Demo!
         </Text>
         <Text style={instructionsStyle}>
-          To get started, enter your name.
+          To get started, create your river.
         </Text>
         <Text style={instructionsStyle}>
           {instructions}

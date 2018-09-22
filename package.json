@@ -1,6 +1,6 @@
 {
   "name": "kawademo2",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -11,9 +11,10 @@
     "npm": "^6.0.1",
     "react": "^16.3.2",
     "react-native": "^0.53.3",
-    "react-native-action-button": "^2.8.4",
+    "react-native-action-button": "^2.8.5",
     "react-native-config": "^0.11.5",
     "react-native-router-flux": "^4.0.0-beta.28",
+    "react-native-vector-icons": "^5.0.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"

@@ -13,6 +13,8 @@ import {
     SAVE_DRIFTWOOD_YCOORDINATES,
     SAVE_CLAM_XCOORDINATES,
     SAVE_CLAM_YCOORDINATES,
+    SAVE_VERTICALLINE_XCOORDINATES,
+    SAVE_VERTICALLINE_YCOORDINATES,
 } from '../../actions/types/types'
 
 const INITIAL_STATE = {
@@ -30,6 +32,8 @@ const INITIAL_STATE = {
     driftwoodY: '',
     clamX: '',
     clamY: '',
+    verticallineX: '',
+    verticallineY: '',
     itemLabel: ''
 }
 
@@ -66,6 +70,10 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, clamX: action.payload };
         case SAVE_CLAM_YCOORDINATES:
             return { ...state, clamY: action.payload };
+        case SAVE_VERTICALLINE_XCOORDINATES:
+            return { ...state, verticallineX: action.payload };
+        case SAVE_VERTICALLINE_YCOORDINATES:
+            return { ...state, verticallineY: action.payload };
         default:
             return { ...state }
     }

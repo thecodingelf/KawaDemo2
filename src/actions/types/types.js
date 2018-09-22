@@ -1,4 +1,3 @@
-
 export const COORDINATE_UPDATE = 'coordinate_update'
 export const COORDINATE_CREATE = 'coordinate_create'
 export const COORDINATE_SAVE_SUCCESS = 'coordinate_save_success'
@@ -23,6 +22,8 @@ export const SAVE_FISH_YCOORDINATES = 'save_fish_ycoordinates'
 export const SAVE_DRIFTWOOD_XCOORDINATES = 'save_driftwood_xcoordinates'
 export const SAVE_DRIFTWOOD_YCOORDINATES = 'save_driftwood_ycoordinates'
 
-
 export const SAVE_CLAM_XCOORDINATES = 'save_clam_xcoordinates'
 export const SAVE_CLAM_YCOORDINATES = 'save_clam_ycoordinates'
+
+export const SAVE_VERTICALLINE_XCOORDINATES = 'save_verticalline_xcoordinates'
+export const SAVE_VERTICALLINE_YCOORDINATES = 'save_verticalline_ycoordinates'

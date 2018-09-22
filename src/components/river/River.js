@@ -17,6 +17,7 @@ import Tree from '../draggables/tree'
 import Rock from '../draggables/rock'
 import Flower from '../draggables/flower'
 import Wave from '../draggables/wave'
+import VerticalLine from '../draggables/vertical-line'
 
 class River extends Component {
     onSavePress() {
@@ -72,6 +73,7 @@ class River extends Component {
                         <Icon name="md-save" style={actionButtonIcon} />
                     </ActionButton.Item>
                 </ActionButton>
+                    <VerticalLine />
                     <Tree />
                     <Rock />
                     <Flower />

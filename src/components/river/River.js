@@ -1,56 +1,81 @@
 import React, { Component } from 'react'
 import {
     View,
-    Text,
     Image,
-    Button,
     ImageBackground,
     StyleSheet,
-    PanResponder,
-    Animated
+    ToastAndroid,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as draggableActions from '../../actions/draggable/Draggable-actions'
 import { saveDraggable } from '../../actions/draggable/Draggable-actions'
-import { Header, Draggable } from '../common'
-// import SubMenu from '../submenu/SubMenu'
+import ActionButton from 'react-native-action-button'
+import Icon from 'react-native-vector-icons/Ionicons'
 import Tree from '../draggables/tree'
 import Rock from '../draggables/rock'
 import Flower from '../draggables/flower'
+import Wave from '../draggables/wave'
 
-// Only modify these if the source image has been modifier
-
-// Modify this to change the base size of the image
 class River extends Component {
     onSavePress() {
         this.props.saveDraggable(this.props.treeX, this.props.treeY, this.props.user, 'tree')
         this.props.saveDraggable(this.props.rockX, this.props.rockY, this.props.user, 'rock')
         this.props.saveDraggable(this.props.flowerX, this.props.flowerY, this.props.user, 'flower')
+        this.props.saveDraggable(this.props.waveX, this.props.waveY, this.props.user, 'wave')
+        Actions.phasetwo()
+        ToastAndroid.show('River was saved', ToastAndroid.SHORT)
     }
     render() {
         const {
-            elementStyle,
             containerStyle,
             actionButtonIcon,
             actionButtonImage,
-            buttonStyle,
             backgroundStyle,
         } = styles
         return (
             <View style={containerStyle}>
-                <Button
-                    title="Save"
-                    onPress={() => this.onSavePress()}
-                />
                 <ImageBackground
-                    source={require('../../assets/images/river2.png')}
+                    source={require('../../assets/images/river-phase-1.png')}
                     style={backgroundStyle}
                 >
+                <ActionButton 
+                    buttonColor="rgba(231,76,60,1)" 
+                    fixNativeFeedbackRadius
+                >
+                    <ActionButton.Item buttonColor='#3498db' title="Tree" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/tree1-01.png')}
+                            style={actionButtonImage}
+                        />                   
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#1abc9c' title="Rock" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/rock1-01.png')}
+                            style={actionButtonImage}
+                        />                    
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#1abc9c' title="Flower" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/flower1-01-01.png')}
+                            style={actionButtonImage}
+                        />                    
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#1abc9c' title="Wave" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/wave.png')}
+                            style={actionButtonImage}
+                        />                    
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#9b59b6' title="Save" onPress={() => this.onSavePress()}>
+                        <Icon name="md-save" style={actionButtonIcon} />
+                    </ActionButton.Item>
+                </ActionButton>
                     <Tree />
                     <Rock />
                     <Flower />
+                    <Wave />
                 </ImageBackground>
             </View>
         )

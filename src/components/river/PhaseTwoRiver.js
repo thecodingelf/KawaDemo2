@@ -5,34 +5,62 @@ import {
     Image,
     ImageBackground,
     StyleSheet,
-    PanResponder,
-    Animated
 } from 'react-native'
-import { Header } from '../common'
-class PhaseTwoRiver extends Component {
+import { Actions } from 'react-native-router-flux'
+import ActionButton from 'react-native-action-button'
+import Icon from 'react-native-vector-icons/Ionicons'
 
+class PhaseTwoRiver extends Component {
+    onSavePress() {
+        Actions.pop()
+        // ToastAndroid.show('River was saved', ToastAndroid.SHORT)
+    }
     render() {
         const {
-            elementStyle,
             containerStyle,
             actionButtonIcon,
             actionButtonImage,
-            buttonStyle,
             backgroundStyle,
         } = styles;
         return (
             <View style={containerStyle}>
-
-                <Header
-                    headerText={'Kawa'}
-                />
-
                 <ImageBackground
-                    source={require('../../assets/images/river2.png')}
+                    source={require('../../assets/images/river-phase-2.png')}
                     style={backgroundStyle}
                 >
+                                <ActionButton 
+                    buttonColor="rgba(231,76,60,1)" 
+                    fixNativeFeedbackRadius
+                >
+                    <ActionButton.Item buttonColor='#3498db' title="Rock" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/rock1-01.png')}
+                            style={actionButtonImage}
+                        />                   
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#1abc9c' title="Driftwood" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/driftwood1-01.png')}
+                            style={actionButtonImage}
+                        />                    
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#1abc9c' title="Clam" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/shell-pearl1-01.png')}
+                            style={actionButtonImage}
+                        />                    
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#1abc9c' title="Fish" onPress={() => {}}>
+                        <Image
+                            source={require('../../assets/images/fish.png')}
+                            style={actionButtonImage}
+                        />                    
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#9b59b6' title="Save" onPress={() => this.onSavePress()}>
+                        <Icon name="md-save" style={actionButtonIcon} />
+                    </ActionButton.Item>
+                </ActionButton>
                 </ImageBackground>
-
             </View>
         )
     }
@@ -50,10 +78,6 @@ const styles = StyleSheet.create({
     actionButtonImage: {
         height: 40,
         width: 40,
-    },
-    buttonStyle: {
-        height: 20,
-        width: 60,
     },
     backgroundStyle: {
         width: '100%',

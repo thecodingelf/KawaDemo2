@@ -13,3 +13,16 @@ export const SAVE_ROCK_YCOORDINATES = 'save_rock_ycoordinates'
 
 export const SAVE_FLOWER_XCOORDINATES = 'save_flower_xcoordinates'
 export const SAVE_FLOWER_YCOORDINATES = 'save_flower_ycoordinates'
+
+export const SAVE_WAVE_XCOORDINATES = 'save_wave_xcoordinates'
+export const SAVE_WAVE_YCOORDINATES = 'save_wave_ycoordinates'
+
+export const SAVE_FISH_XCOORDINATES = 'save_fish_xcoordinates'
+export const SAVE_FISH_YCOORDINATES = 'save_fish_ycoordinates'
+
+export const SAVE_DRIFTWOOD_XCOORDINATES = 'save_driftwood_xcoordinates'
+export const SAVE_DRIFTWOOD_YCOORDINATES = 'save_driftwood_ycoordinates'
+
+
+export const SAVE_CLAM_XCOORDINATES = 'save_clam_xcoordinates'
+export const SAVE_CLAM_YCOORDINATES = 'save_clam_ycoordinates'

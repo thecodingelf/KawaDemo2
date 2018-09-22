@@ -5,6 +5,14 @@ import {
     SAVE_ROCK_YCOORDINATES,
     SAVE_FLOWER_XCOORDINATES,
     SAVE_FLOWER_YCOORDINATES,
+    SAVE_WAVE_XCOORDINATES,
+    SAVE_WAVE_YCOORDINATES,
+    SAVE_FISH_XCOORDINATES,
+    SAVE_FISH_YCOORDINATES,
+    SAVE_DRIFTWOOD_XCOORDINATES,
+    SAVE_DRIFTWOOD_YCOORDINATES,
+    SAVE_CLAM_XCOORDINATES,
+    SAVE_CLAM_YCOORDINATES,
 } from '../../actions/types/types'
 
 const INITIAL_STATE = {
@@ -14,6 +22,14 @@ const INITIAL_STATE = {
     rockY: '',
     flowerX: '',
     flowerY: '',
+    waveX: '',
+    waveY: '',
+    fishX: '',
+    fishY: '',
+    driftwoodX: '',
+    driftwoodY: '',
+    clamX: '',
+    clamY: '',
     itemLabel: ''
 }
 
@@ -34,6 +50,22 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, flowerX: action.payload };
         case SAVE_FLOWER_YCOORDINATES:
             return { ...state, flowerY: action.payload };
+        case SAVE_WAVE_XCOORDINATES:
+            return { ...state, waveX: action.payload };
+        case SAVE_WAVE_YCOORDINATES:
+            return { ...state, waveY: action.payload };
+        case SAVE_FISH_XCOORDINATES:
+            return { ...state, fishX: action.payload };
+        case SAVE_FISH_YCOORDINATES:
+            return { ...state, fishY: action.payload };
+        case SAVE_DRIFTWOOD_XCOORDINATES:
+            return { ...state, driftwoodX: action.payload };
+        case SAVE_DRIFTWOOD_YCOORDINATES:
+            return { ...state, driftwoodY: action.payload };
+        case SAVE_CLAM_XCOORDINATES:
+            return { ...state, clamX: action.payload };
+        case SAVE_CLAM_YCOORDINATES:
+            return { ...state, clamY: action.payload };
         default:
             return { ...state }
     }

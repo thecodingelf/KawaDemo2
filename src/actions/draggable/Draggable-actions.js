@@ -9,13 +9,21 @@ import {
     SAVE_ROCK_YCOORDINATES,
     SAVE_FLOWER_XCOORDINATES,
     SAVE_FLOWER_YCOORDINATES,
+    SAVE_WAVE_XCOORDINATES,
+    SAVE_WAVE_YCOORDINATES,
+    SAVE_FISH_XCOORDINATES,
+    SAVE_FISH_YCOORDINATES,
+    SAVE_DRIFTWOOD_XCOORDINATES,
+    SAVE_DRIFTWOOD_YCOORDINATES,
+    SAVE_CLAM_XCOORDINATES,
+    SAVE_CLAM_YCOORDINATES,
 } from '../types/types'
 
 export const saveDraggable = (x, y, user, item) => {
     return (dispatch) => {
         FirebaseHandler.setCoordinates(x, y, user, item)
         .then(
-            Actions.phasetwo()
+            Actions.client()
         )
     }
 }
@@ -33,6 +41,18 @@ export const setCoordinates = (coordX, coordY, itemLabel) => {
         } else if (itemLabel == 'flower') {
             dispatch({ type: SAVE_FLOWER_XCOORDINATES, payload: coordX })
             dispatch({ type: SAVE_FLOWER_YCOORDINATES, payload: coordY })
+        } else if (itemLabel == 'wave') {
+            dispatch({ type: SAVE_WAVE_XCOORDINATES, payload: coordX })
+            dispatch({ type: SAVE_WAVE_YCOORDINATES, payload: coordY })
+        } else if (itemLabel == 'fish') {
+            dispatch({ type: SAVE_FISH_XCOORDINATES, payload: coordX })
+            dispatch({ type: SAVE_FISH_YCOORDINATES, payload: coordY })
+        } else if (itemLabel == 'driftwood') {
+            dispatch({ type: SAVE_DRIFTWOOD_XCOORDINATES, payload: coordX })
+            dispatch({ type: SAVE_DRIFTWOOD_YCOORDINATES, payload: coordY })
+        } else if (itemLabel == 'clam') {
+            dispatch({ type: SAVE_CLAM_XCOORDINATES, payload: coordX })
+            dispatch({ type: SAVE_CLAM_YCOORDINATES, payload: coordY })
         }
     }
 }

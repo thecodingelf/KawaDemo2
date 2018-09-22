@@ -25,7 +25,6 @@ const RouterComponent = () => {
                     />
                 </Scene>
                 <Scene key="client" hideNavBar>
-
                     <Scene
                         key="menu"
                         component={Main}

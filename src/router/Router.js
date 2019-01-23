@@ -2,11 +2,12 @@ import React from 'react'
 import { Scene, Router, Actions } from 'react-native-router-flux'
 import LoginForm from '../components/authentication/LoginForm'
 import SignUpForm from '../components/authentication/SignUpForm'
+import ResetPassword from '../components/authentication/ResetPassword'
 import Main from '../components/main/Main'
 import River from '../components/river/River'
-import MyRivers from '../components/myrivers/MyRivers';
-import Information from '../components/info/Information';
-import PhaseTwoRiver from '../components/river/PhaseTwoRiver';
+import MyRivers from '../components/myrivers/MyRivers'
+import Information from '../components/info/Information'
+import PhaseTwoRiver from '../components/river/PhaseTwoRiver'
 
 const RouterComponent = () => {
     return (
@@ -22,6 +23,10 @@ const RouterComponent = () => {
                     <Scene
                         key="signUp"
                         component={SignUpForm}
+                    />
+                    <Scene 
+                        key="resetPassword"
+                        component={ResetPassword}
                     />
                 </Scene>
                 <Scene key="client" hideNavBar>

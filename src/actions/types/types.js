@@ -4,6 +4,8 @@ export const COORDINATE_SAVE_SUCCESS = 'coordinate_save_success'
 
 export const SAVE_DRAGGABLE = 'save_draggable'
 
+export const SET_ACTIVE_SCENE = 'set_active_scene'
+
 export const SAVE_TREE_XCOORDINATES = 'save_tree_xcoordinates'
 export const SAVE_TREE_YCOORDINATES = 'save_tree_ycoordinates'
 

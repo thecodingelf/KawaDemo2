@@ -21,12 +21,15 @@ import VerticalLine from '../draggables/vertical-line'
 
 class River extends Component {
     onSavePress() {
-        this.props.saveDraggable(this.props.treeX, this.props.treeY, this.props.user, 'tree')
-        this.props.saveDraggable(this.props.rockX, this.props.rockY, this.props.user, 'rock')
-        this.props.saveDraggable(this.props.flowerX, this.props.flowerY, this.props.user, 'flower')
-        this.props.saveDraggable(this.props.waveX, this.props.waveY, this.props.user, 'wave')
+        this.props.saveDraggable(this.props.treeX, this.props.treeY, this.props.user, 'tree', this.props.activeScene)
+        this.props.saveDraggable(this.props.rockX, this.props.rockY, this.props.user, 'rock', this.props.activeScene)
+        this.props.saveDraggable(this.props.flowerX, this.props.flowerY, this.props.user, 'flower', this.props.activeScene)
+        this.props.saveDraggable(this.props.waveX, this.props.waveY, this.props.user,  'wave', this.props.activeScene)
         Actions.phasetwo()
         ToastAndroid.show('River was saved', ToastAndroid.SHORT)
+    }
+    onAddTree() {
+        this.props.addTree(this.props.treeX, this.props.treeY, this.props.user, 'tree', this.props.activeScene)
     }
     render() {
         const {
@@ -45,12 +48,6 @@ class River extends Component {
                     buttonColor="rgba(231,76,60,1)" 
                     fixNativeFeedbackRadius
                 >
-                    <ActionButton.Item buttonColor='#3498db' title="Tree" onPress={() => {}}>
-                        <Image
-                            source={require('../../assets/images/tree1-01.png')}
-                            style={actionButtonImage}
-                        />                   
-                    </ActionButton.Item>
                     <ActionButton.Item buttonColor='#1abc9c' title="Rock" onPress={() => {}}>
                         <Image
                             source={require('../../assets/images/rock1-01.png')}
@@ -69,11 +66,17 @@ class River extends Component {
                             style={actionButtonImage}
                         />                    
                     </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#3498db' title="Tree" onPress={() => this.onAddTree()}>
+                        <Image
+                            source={require('../../assets/images/tree1-01.png')}
+                            style={actionButtonImage}
+                        />                   
+                    </ActionButton.Item>
                     <ActionButton.Item buttonColor='#9b59b6' title="Save" onPress={() => this.onSavePress()}>
                         <Icon name="md-save" style={actionButtonIcon} />
                     </ActionButton.Item>
                 </ActionButton>
-                    <VerticalLine />
+                    {/* <VerticalLine /> */}
                     <Tree />
                     <Rock />
                     <Flower />

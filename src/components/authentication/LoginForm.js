@@ -8,12 +8,11 @@ import {
     loginUser
 } from '../../actions/authentication/Auth'
 import {
-    Card,
-    CardSection,
     Input,
     Button,
     Spinner
 } from '../common'
+import { styles } from './Auth.styles'
 
 class Loginform extends Component {
     onEmailChange(text) {
@@ -53,23 +52,35 @@ class Loginform extends Component {
         )
     }
 
+    renderForgotPassword() {
+        const { forgotPassword } = styles
+        return (
+            <Text
+                onPress={() => Actions.resetPassword()}
+                style={forgotPassword}
+            >
+                Forgot password?
+        </Text>
+        )
+    }
+
     render() {
         const {
             loginContainer,
             buttonContainer,
+            inputStyle,
             buttonView,
-            errorText } = styles
+            errorText,
+        } = styles
         return (
-            <Card style={loginContainer}>
-                <CardSection>
+            <View style={loginContainer}>
+                <View style={inputStyle}>
                     <Input
                         label="Email"
                         placeholder="email@gmail.com"
                         onChangeText={this.onEmailChange.bind(this)}
                         value={this.props.email}
                     />
-                </CardSection>
-                <CardSection>
                     <Input
                         secureTextEntry
                         label="Password"
@@ -77,8 +88,10 @@ class Loginform extends Component {
                         onChangeText={this.onPasswordChange.bind(this)}
                         value={this.props.password}
                     />
-                </CardSection>
-                <CardSection>
+                    <Text style={errorText}>
+                        {this.props.error}
+                    </Text>
+                </View>
                     <View style={buttonContainer}>
                         <View style={buttonView}>
                             {this.renderLoginButton()}
@@ -86,42 +99,13 @@ class Loginform extends Component {
                         <View style={buttonView}>
                             {this.renderSignUpButton()}
                         </View>
+                        <View style={buttonView}>
+                            {this.renderForgotPassword()}
+                        </View>
                     </View>
-                </CardSection>
-                <Text style={errorText}>
-                    {this.props.error}
-                </Text>
-            </Card>
+            </View>
         )
     }
-}
-
-const styles = {
-    loginContainer: {
-        marginTop: 50,
-        padding: 10,
-    },
-    errorText: {
-        fontSize: 20,
-        alignSelf: 'center',
-        color: 'red'
-    },
-    signUpButtonStyle: {
-        color: '#007aff',
-        fontWeight: 'bold',
-        padding: 6,
-    },
-    buttonContainer: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonView: {
-        flexDirection: 'row',
-        padding: 4,
-        marginTop: 8,
-    },
 }
 
 const mapStateToProps = ({ auth }) => {

@@ -8,12 +8,11 @@ import {
     createUser
 } from '../../actions/authentication/Auth'
 import {
-    Card,
-    CardSection,
     Input,
     Button,
     Spinner
 } from '../common'
+import { styles } from './Auth.styles'
 
 class SignUpform extends Component {
     constructor(props) {
@@ -24,7 +23,7 @@ class SignUpform extends Component {
             username: "",
 
         };
-    } //End of Constructor
+    }
     onEmailChange(text) {
         this.props.emailChanged(text)
     }
@@ -49,18 +48,22 @@ class SignUpform extends Component {
     }
 
     render() {
-        const { errorText } = styles
+        const { 
+            errorText,
+            signUpContainer,
+            signUpinputStyle,
+            signUpButtonContainer,
+            signUpButtonView,
+        } = styles
         return (
-            <Card>
-                <CardSection>
+            <View style={signUpContainer}>
+                <View style={signUpinputStyle}>
                     <Input
                         label="Email"
                         placeholder="email@gmail.com"
                         onChangeText={(value) => this.setState({ email: value })}
                         value={this.state.email}
                     />
-                </CardSection>
-                <CardSection>
                     <Input
                         secureTextEntry
                         label="Password"
@@ -68,31 +71,23 @@ class SignUpform extends Component {
                         onChangeText={(value) => this.setState({ password: value })}
                         value={this.state.password}
                     />
-                </CardSection>
-                <CardSection>
                     <Input
                         label="Username"
                         placeholder="username"
                         onChangeText={(value) => this.setState({ username: value })}
                         value={this.state.username}
                     />
-                </CardSection>
-                <Text style={errorText}>
-                    {this.props.error}
-                </Text>
-                <CardSection>
-                    {this.renderButton()}
-                </CardSection>
-            </Card>
+                    <Text style={errorText}>
+                        {this.props.error}
+                    </Text>
+                </View>
+                <View style={signUpButtonContainer}>
+                    <View style={signUpButtonView}>
+                        {this.renderButton()}
+                    </View>
+                </View>
+            </View>
         )
-    }
-}
-
-const styles = {
-    errorText: {
-        fontSize: 20,
-        alignSelf: 'center',
-        color: 'red'
     }
 }
 

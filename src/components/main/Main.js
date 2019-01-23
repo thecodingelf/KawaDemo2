@@ -1,24 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import firebase from 'firebase'
 import {
+  View,
   Platform,
   StyleSheet,
   Text
-} from 'react-native';
+} from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import { Card, CardSection, Button, Input } from '../common';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as draggableActions from '../../actions/draggable/Draggable-actions'
+import { Button } from '../common'
+import { styles } from './Main.styles'
 
 const instructions = Platform.select({
   ios: 'More features coming soon!',
   android: 'More features coming soon!',
-});
+})
 
 class Main extends Component {
 
+  async createScene(scene) {
+    var user = await firebase.auth().currentUser
+    let newSceneKey = await firebase.database().ref(`users/${user.uid}/scenes`).push({scene: scene}).key
+    this.props.setActiveScene(newSceneKey)
+    console.log("newSceneKey:",newSceneKey)
+    Actions.main()
+  }
+
   render() {
-    const { containerStyle, welcomeStyle, instructionsStyle } = styles;
+    const { 
+      containerStyle, 
+      welcomeStyle, 
+      instructionsStyle,
+      buttonContainer,
+      buttonView,
+      footer,
+    } = styles
 
     return (
-      <Card style={containerStyle}>
+      <View style={containerStyle}>
         <Text style={welcomeStyle}>
           Welcome to Kawa Demo!
         </Text>
@@ -28,43 +49,42 @@ class Main extends Component {
         <Text style={instructionsStyle}>
           {instructions}
         </Text>
-        <CardSection>
-          <Button onPress={() => Actions.main()}>
-            Create My River
-          </Button>
-        </CardSection>
-        <CardSection>
-          <Button onPress={() => Actions.rivers()}>
-            My Rivers
-          </Button>
-        </CardSection>
-        <CardSection>
-          <Button onPress={() => Actions.info()}>
-            Help/Info
-          </Button>
-        </CardSection>
-      </Card >
+        <View style={buttonContainer}>
+          <View style={buttonView}>
+            <Button onPress={() => this.createScene("river")}>
+              Create My River
+            </Button>
+          </View>
+          <View style={buttonView}>
+            <Button onPress={() => Actions.rivers()}>
+              My Rivers
+            </Button>
+          </View>
+          <View style={buttonView}>
+            <Button onPress={() => Actions.info()}>
+              Help/Info
+            </Button>
+          </View>
+        </View>
+      </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcomeStyle: {
-    fontSize: 24,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructionsStyle: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+function mapStateToProps(state) {
+  return {
+      ...state.auth,
+      ...state.draggable
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ ...draggableActions }, dispatch)
+}
 
-export default Main
+
+
+
+export default connect(
+  mapStateToProps, mapDispatchToProps, null, { 
+      withRef: true 
+})(Main)

@@ -1,3 +1,4 @@
+import { AsyncStorage } from 'react-native'
 import {
     SAVE_TREE_XCOORDINATES,
     SAVE_TREE_YCOORDINATES,
@@ -14,7 +15,7 @@ import {
     SAVE_CLAM_XCOORDINATES,
     SAVE_CLAM_YCOORDINATES,
     SAVE_VERTICALLINE_XCOORDINATES,
-    SAVE_VERTICALLINE_YCOORDINATES,
+    SET_ACTIVE_SCENE,
 } from '../../actions/types/types'
 
 const INITIAL_STATE = {
@@ -33,18 +34,22 @@ const INITIAL_STATE = {
     clamX: '',
     clamY: '',
     verticallineX: '',
-    verticallineY: '',
-    itemLabel: ''
+    itemLabel: '',
+    activeScene: '',
 }
 
 export default (state = INITIAL_STATE, action) => {
-    console.log("ACTION TYPE:", action.type)
     switch (action.type) {
         case SAVE_TREE_XCOORDINATES:
-            console.log("TreeX Payload:", action.payload)
-            return { ...state, treeX: action.payload };
+            if (treeX) {
+                AsyncStorage.setItem('treeX', action.payload.treeX)
+            }
+            console.log(AsyncStorage.getItem(treeX))
+            return { ...state, treeX: action.payload }
         case SAVE_TREE_YCOORDINATES:
-            console.log("TreeY Payload:", action.payload)
+            if (action.treeY) {
+                AsyncStorage.setItem('treeY', action.treeY)
+            }
             return { ...state, treeY: action.payload };
         case SAVE_ROCK_XCOORDINATES:
             return { ...state, rockX: action.payload };
@@ -72,8 +77,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, clamY: action.payload };
         case SAVE_VERTICALLINE_XCOORDINATES:
             return { ...state, verticallineX: action.payload };
-        case SAVE_VERTICALLINE_YCOORDINATES:
-            return { ...state, verticallineY: action.payload };
+        case SET_ACTIVE_SCENE:
+            return { ...state, activeScene: action.payload }
         default:
             return { ...state }
     }
